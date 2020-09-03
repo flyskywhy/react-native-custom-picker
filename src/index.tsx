@@ -83,7 +83,7 @@ export class CustomPicker extends React.PureComponent<
 
     return (
       <View style={containerStyle} pointerEvents={viewPointerEvents}>
-        <TouchableOpacity onPress={this.showOptions}>
+        <TouchableOpacity>
           <View style={style}>
             {ft({
               defaultText: placeholder as string,
