@@ -50,6 +50,7 @@ export class CustomPicker extends React.PureComponent<
 
   render() {
     const {
+      disabled,
       containerStyle,
       modalAnimationType,
       fieldTemplate,
@@ -81,7 +82,7 @@ export class CustomPicker extends React.PureComponent<
       this.props.maxHeight || Dimensions.get('window').height - 60
 
     return (
-      <View style={containerStyle}>
+      <View style={containerStyle} disabled={disabled}>
         <TouchableOpacity onPress={this.showOptions}>
           <View style={style}>
             {ft({
@@ -214,6 +215,7 @@ export class CustomPicker extends React.PureComponent<
 
 // Re-export all types for convenience use.
 export {
+  disabled,
   CustomPickerActions,
   CustomPickerProps,
   CustomPickerState,
