@@ -184,7 +184,7 @@ export class CustomExample extends React.Component {
       <View style={styles.container}>
         <View>
           {!selectedItem && <Text style={[styles.text, { color: 'grey' }]}>{defaultText}</Text>}
-          {selectedItem && (
+          {!!selectedItem && (
             <View style={styles.innerContainer}>
               <TouchableOpacity style={styles.clearButton} onPress={clear}>
                 <Text style={{ color: '#fff' }}>Clear</Text>
