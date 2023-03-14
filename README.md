@@ -1,7 +1,9 @@
 # React Native Custom Picker
 
-[![npm version](https://badge.fury.io/js/react-native-custom-picker.svg)](https://badge.fury.io/js/react-native-custom-picker)
-[![build status](https://travis-ci.org/budiadiono/react-native-custom-picker.svg)](https://travis-ci.org/budiadiono/react-native-custom-picker)
+[![npm version](http://img.shields.io/npm/v/@flyskywhy/react-native-custom-picker.svg?style=flat-square)](https://npmjs.org/package/@flyskywhy/react-native-custom-picker "View this project on npm")
+[![npm downloads](http://img.shields.io/npm/dm/@flyskywhy/react-native-custom-picker.svg?style=flat-square)](https://npmjs.org/package/@flyskywhy/react-native-custom-picker "View this project on npm")
+[![npm licence](http://img.shields.io/npm/l/@flyskywhy/react-native-custom-picker.svg?style=flat-square)](https://npmjs.org/package/@flyskywhy/react-native-custom-picker "View this project on npm")
+[![Platform](https://img.shields.io/badge/platform-ios%20%7C%20android%20%7C%20web-989898.svg?style=flat-square)](https://npmjs.org/package/@flyskywhy/react-native-custom-picker "View this project on npm")
 
 React native customizable picker component.
 
@@ -10,13 +12,13 @@ React native customizable picker component.
 Using npm:
 
 ```
-npm i -S react-native-custom-picker
+npm i -S @flyskywhy/react-native-custom-picker
 ```
 
 or yarn:
 
 ```
-yarn add react-native-custom-picker
+yarn add @flyskywhy/react-native-custom-picker
 ```
 
 ## Props
@@ -72,7 +74,7 @@ You can use `CustomPicker` component directly as shown below:
 ```javascript
 import * as React from 'react'
 import { Alert, View } from 'react-native'
-import { CustomPicker } from 'react-native-custom-picker'
+import { CustomPicker } from '@flyskywhy/react-native-custom-picker'
 
 export class BasicExample extends React.Component {
   render() {
@@ -100,7 +102,7 @@ Or customize it your self like this:
 ```javascript
 import * as React from 'react'
 import { Alert, Text, View, TouchableOpacity, StyleSheet } from 'react-native'
-import { CustomPicker } from 'react-native-custom-picker'
+import { CustomPicker } from '@flyskywhy/react-native-custom-picker'
 
 export class CustomExample extends React.Component {
   render() {
@@ -182,19 +184,17 @@ export class CustomExample extends React.Component {
     const { selectedItem, defaultText, getLabel, clear } = settings
     return (
       <View style={styles.container}>
-        <View>
-          {!selectedItem && <Text style={[styles.text, { color: 'grey' }]}>{defaultText}</Text>}
-          {!!selectedItem && (
-            <View style={styles.innerContainer}>
-              <TouchableOpacity style={styles.clearButton} onPress={clear}>
-                <Text style={{ color: '#fff' }}>Clear</Text>
-              </TouchableOpacity>
-              <Text style={[styles.text, { color: selectedItem.color }]}>
-                {getLabel(selectedItem)}
-              </Text>
-            </View>
-          )}
-        </View>
+        {!selectedItem && <Text style={[styles.text, { color: 'grey' }]}>{defaultText}</Text>}
+        {!!selectedItem && (
+          <View style={styles.innerContainer}>
+            <TouchableOpacity style={styles.clearButton} onPress={clear}>
+              <Text style={{ color: '#fff' }}>Clear</Text>
+            </TouchableOpacity>
+            <Text style={[styles.text, { color: selectedItem.color }]}>
+              {getLabel(selectedItem)}
+            </Text>
+          </View>
+        )}
       </View>
     )
   }
