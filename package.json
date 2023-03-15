@@ -52,6 +52,13 @@
     "react": "*",
     "react-native": "*"
   },
+  "keywords": [
+    "custom",
+    "customizable",
+    "image",
+    "picker",
+    "react-native"
+  ],
   "jest": {
     "globals": {
       "ts-jest": {
