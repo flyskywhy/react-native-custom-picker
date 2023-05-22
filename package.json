@@ -1,6 +1,6 @@
 {
   "name": "@flyskywhy/react-native-custom-picker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React native customizable picker component.",
   "private": false,
   "main": "dist/index.js",
