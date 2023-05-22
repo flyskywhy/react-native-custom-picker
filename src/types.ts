@@ -236,6 +236,10 @@ export interface CustomPickerState {
    */
   modalVisible: boolean
   /**
+   * Selected defaultValue.
+   */
+  defaultValue: any
+  /**
    * Selected item.
    */
   selectedItem: any

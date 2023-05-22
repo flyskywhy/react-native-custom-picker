@@ -18,6 +18,10 @@ import {
   OptionTemplateFunction
 } from './types'
 
+function defaultWhenEmpty(value: any, defaultValue: any) {
+  return value === null || value === undefined ? defaultValue : value
+}
+
 /**
  * React native customizable picker component
  */
@@ -36,9 +40,10 @@ export class CustomPicker extends React.PureComponent<
     super(props)
     this.state = {
       modalVisible: false,
-      selectedItem: this.defaultWhenEmpty(
-        this.props.value,
-        this.props.defaultValue
+      defaultValue: props.defaultValue,
+      selectedItem: defaultWhenEmpty(
+        props.value,
+        props.defaultValue
       )
     }
     this.showOptions = this.showOptions.bind(this)
@@ -46,6 +51,20 @@ export class CustomPicker extends React.PureComponent<
     this.selectOption = this.selectOption.bind(this)
     this.clear = this.clear.bind(this)
     this.getLabel = this.getLabel.bind(this)
+  }
+
+  static getDerivedStateFromProps(nextProps: CustomPickerProps, prevState: CustomPickerState) {
+    if (nextProps.defaultValue !== prevState.defaultValue) {
+      return {
+        defaultValue: nextProps.defaultValue,
+        selectedItem: defaultWhenEmpty(
+          nextProps.value,
+          nextProps.defaultValue
+        )
+      }
+    }
+
+    return null;
   }
 
   render() {
@@ -147,7 +166,7 @@ export class CustomPicker extends React.PureComponent<
   componentDidMount() {
     const { value, defaultValue } = this.props
     if (value || defaultValue) {
-      this.selectOption(this.defaultWhenEmpty(value, defaultValue), false)
+      this.selectOption(defaultWhenEmpty(value, defaultValue), false)
     }
   }
 
@@ -205,10 +224,6 @@ export class CustomPicker extends React.PureComponent<
   clear() {
     const { defaultValue } = this.props
     this.selectOption(defaultValue || null, true)
-  }
-
-  defaultWhenEmpty(value: any, defaultValue: any) {
-    return value === null || value === undefined ? defaultValue : value
   }
 }
 
